@@ -9,22 +9,8 @@ from bs4 import BeautifulSoup
 headlines = []
 fail = "Currently unable to get headlines for "
 
-guardian_url = "https://www.theguardian.com/uk"
-times_url = "https://www.thetimes.co.uk/"
-telegraph_url = "https://www.telegraph.co.uk/"
-dailymail_url = "https://www.dailymail.co.uk/home/index.html"
 dailymirror_url = "https://www.mirror.co.uk/"
-dailyexpress_url = "https://www.express.co.uk/"
-independent_url = "https://www.independent.co.uk/news/uk"
-financialtimes_url = "https://www.ft.com/"
-inews_url = "https://inews.co.uk/"
-morningstar_url = "https://morningstaronline.co.uk/"
-dailystar_url = "https://www.dailystar.co.uk/"
-sun_url = "https://www.thesun.co.uk/"
-eveningstandard_url = "https://www.standard.co.uk/"
-irishsun_url = "https://www.thesun.ie/"
-herald_url = "https://www.heraldscotland.com/"
-metro_url = "https://metro.co.uk/"
+
 
 def scrape(url):
   
@@ -44,146 +30,9 @@ def scrape(url):
   # beautiful soup methods are now available to clean this data response
   soup = BeautifulSoup(results.text, "html.parser")
 
- 
-  if url == guardian_url:
-    paper = "The Guardian"
-    headline_html = soup.find('span', class_='js-headline-text')
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == times_url:
-    paper = "The Times"
-    headline_html = soup.find('h3', class_='Headline--xl')
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == telegraph_url:
-    paper = "The Telegraph"
-    headline_html = soup.find('span', class_='list-headline__text')
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == dailymail_url:
-    paper = "Daily Mail"
-    headline_html = soup.find('h2', class_='linkro-darkred')
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
   if url == dailymirror_url:
     paper = "Daily Mirror"
     headline_html = soup.find('a', class_='publication-font')
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == dailyexpress_url:
-    paper = "Daily Express"
-    headline_html = soup.find('h2')
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == independent_url:
-    paper = "Independent"
-    headline_html_array = soup.find_all('h2')
-    headline_html = headline_html_array[0]
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == financialtimes_url:
-    paper = "Financial Times"
-    headline_html = soup.find('div', class_="o-teaser__heading")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == metro_url:
-    paper = "Metro"
-    headline_html = soup.find('span', class_="colour-box")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == dailystar_url:
-    paper = "Daily Star"
-    headline_html = soup.find('a', class_="publication-font")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == inews_url:
-    paper = "The i"
-    headline_html = soup.find('div', class_="inews__post-hero__content")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == sun_url:
-    paper = "The Sun"
-    headline_html = soup.find('p', class_="teaser__subdeck")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == morningstar_url:
-    paper = "Morning Star"
-    headline_html = soup.find('h1')
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == eveningstandard_url:
-    paper = "Evening Standard"
-    headline_html = soup.find('h2', class_="sc-cdpFOc fOcWpH")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-
-  if url == irishsun_url:
-    paper = "The Irish Sun"
-    headline_html = soup.find('p', class_="teaser__subdeck")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
-  
-  if url == herald_url:
-    paper = "The Herald"
-    headline_html = soup.find('div', class_='col-md-4 disaster-info col-sm-pull-8')
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
