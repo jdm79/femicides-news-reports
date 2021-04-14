@@ -35,7 +35,7 @@ def print_headlines():
 app = FlaskAPI(__name__)
 CORS(app)
 
-@app.route("/headlines", methods=['GET'])
+@app.route("/historias", methods=['GET'])
 
 def headlines_list():
    
