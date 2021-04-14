@@ -9,6 +9,9 @@ from bs4 import BeautifulSoup
 headlines = []
 fail = "Currently unable to get headlines for "
 
+primicia_url = "https://primicia.com.ve/tag/femicidio/"
+
+
 guardian_url = "https://www.theguardian.com/uk"
 times_url = "https://www.thetimes.co.uk/"
 telegraph_url = "https://www.telegraph.co.uk/"
@@ -44,15 +47,14 @@ def scrape(url):
   # beautiful soup methods are now available to clean this data response
   soup = BeautifulSoup(results.text, "html.parser")
 
-  if url == dailymirror_url:
-    paper = "Daily Mirror"
-    headline_html = soup.find('a', class_='publication-font')
+  if url == primicia_url:
+    paper = "Primicia"
+    headline_html = soup.find('h5', class_='card-title title-thumb')
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
       headline = fail + paper
-
 
   time_stamp = datetime.datetime.now()
   date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")

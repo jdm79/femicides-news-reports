@@ -1,3 +1,3 @@
 urls = {
-  "dailymirror_url":"https://www.mirror.co.uk/" 
+  "primicia_url":"https://primicia.com.ve/tag/femicidio/"
 }
