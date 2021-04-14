@@ -10,6 +10,7 @@ headlines = []
 fail = "Currently unable to get headlines for "
 
 dailymirror_url = "https://www.mirror.co.uk/"
+universal_url = "https://www.eluniversal.com/"
 
 
 def scrape(url):
@@ -32,6 +33,15 @@ def scrape(url):
 
   if url == dailymirror_url:
     paper = "Daily Mirror"
+    headline_html = soup.find('a', class_='publication-font')
+    link = url
+    if headline_html != None:
+      headline = headline_html.text.strip()
+    else:
+      headline = fail + paper
+
+  if url == universal_url:
+    paper = "El Universal"
     headline_html = soup.find('a', class_='publication-font')
     link = url
     if headline_html != None:
